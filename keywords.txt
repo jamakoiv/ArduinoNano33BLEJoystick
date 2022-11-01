@@ -1,0 +1,44 @@
+#######################################
+# Syntax Coloring Map For Arduino_LSM9DS1
+####################################### 
+# Class
+#######################################
+
+Joystick	KEYWORD1
+joystick	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+begin		KEYWORD2
+end			KEYWORD2
+
+setXAxis		KEYWORD2
+setYAxis		KEYWORD2
+setZAxis		KEYWORD2
+setRxAxis		KEYWORD2
+setRyAxis		KEYWORD2
+setRzAxis		KEYWORD2
+setThrottleAxis KEYWORD2
+setRudderAxis	KEYWORD2
+
+setXAxisRange	KEYWORD2
+setYAxisRange	KEYWORD2
+setZAxisRange	KEYWORD2
+setRxAxisRange	KEYWORD2
+setRyAxisRange	KEYWORD2
+setRzAxisRange	KEYWORD2
+setThrottleAxisRange 	KEYWORD2
+setRudderAxisRange		KEYWORD2
+
+
+pressButton		KEYWORD2
+releaseButton 	KEYWORD2
+toggleButton	KEYWORD2
+setButton		KEYWORD2
+
+
+#######################################
+# Constants
+#######################################
