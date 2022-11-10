@@ -184,9 +184,6 @@ public:
   */
   static inline int16_t mapfi(float x, float in_min, float in_max, int16_t out_min, int16_t out_max)
   {
-    Serial.println( String("mapfi input: ") + String(x) );
-    Serial.println( (x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min );
-
     return (x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min;
   }
 
