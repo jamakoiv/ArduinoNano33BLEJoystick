@@ -39,8 +39,12 @@ private:
 
   // Axis data will be constrained to this range when sending it over the USB. Default 10-bit res.
   // TODO: 16-bit resolution works on windows but not on linux. Maybe something wrong with the HID-report?
-  static const int16_t HID_AXIS_MIN = -511;
-  static const int16_t HID_AXIS_MAX = 511;
+  //static const int16_t HID_AXIS_MIN = -511;   // 10-bit
+  //static const int16_t HID_AXIS_MAX = 511;
+  //static const int16_t HID_AXIS_MIN = -1023;  // 11-bit
+  //static const int16_t HID_AXIS_MAX = 1023;
+  static const int16_t HID_AXIS_MIN = -2047;    // 12-bit
+  static const int16_t HID_AXIS_MAX = 2047;
 
 
   // TODO:  Report IDs have to be declared static or otherwise the report-descriptor becomes corrupted and
@@ -180,6 +184,9 @@ public:
   */
   static inline int16_t mapfi(float x, float in_min, float in_max, int16_t out_min, int16_t out_max)
   {
+    Serial.println( String("mapfi input: ") + String(x) );
+    Serial.println( (x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min );
+
     return (x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min;
   }
 
@@ -187,20 +194,18 @@ public:
   /*
     Set axis value to the given value.
   */
-  void setXAxis(int16_t value);
-  void setYAxis(int16_t value);
-  void setZAxis(int16_t value);
-  void setRxAxis(int16_t value);
-  void setRyAxis(int16_t value);
-  void setRzAxis(int16_t value);
-  void setThrottleAxis(int16_t value);
-  void setRudderAxis(int16_t value);
+  void setXAxis(float value);
+  void setYAxis(float value);
+  void setZAxis(float value);
+  void setRxAxis(float value);
+  void setRyAxis(float value);
+  void setRzAxis(float value);
+  void setThrottleAxis(float value);
+  void setRudderAxis(float value);
 
 
   /*
     Set the allowed minimum and maximum values. 
-    Axis values given outside the range are constrained between [min, max].
-    e.g. 'setXAxisRange(-255, 255)' followed by 'setXAxis(500)' will result axis.X being 255.
   */
   void setXAxisRange(int16_t min, int16_t max);
   void setYAxisRange(int16_t min, int16_t max);

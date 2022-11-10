@@ -272,44 +272,44 @@ int8_t USBJoystick::axis16bitToByte(int16_t axisValue, bool MSB_OR_LSB) {
 
 
 // TODO: Too much cut & pasting. Can we just write one function which takes axis as input?
-void USBJoystick::setXAxis(int16_t value) {
+void USBJoystick::setXAxis(float value) {
   value = constrain( value, this->axisMin.X, this->axisMax.X );
-  this->axis.X = map(value, this->axisMin.X, this->axisMax.X, 
+  this->axis.X = USBJoystick::mapfi(value, this->axisMin.X, this->axisMax.X, 
                     this->HID_AXIS_MIN, this->HID_AXIS_MAX);
 
   if (this->autoSend) this->update();
 }
 
-void USBJoystick::setYAxis(int16_t value) {
+void USBJoystick::setYAxis(float value) {
   value = constrain (value, this->axisMin.Y, this->axisMax.Y );
-  this->axis.Y = map(value, this->axisMin.Y, this->axisMax.Y,
+  this->axis.Y = USBJoystick::mapfi(value, this->axisMin.Y, this->axisMax.Y,
                     this->HID_AXIS_MIN, this->HID_AXIS_MAX);
  
   if (this->autoSend) this->update();
 }
 
-void USBJoystick::setZAxis(int16_t value) {
+void USBJoystick::setZAxis(float value) {
   value = constrain( value, this->axisMin.Z, this->axisMax.Z );
-  this->axis.Z = map(value, this->axisMin.Z, this->axisMax.Z,
+  this->axis.Z = USBJoystick::mapfi(value, this->axisMin.Z, this->axisMax.Z,
                     this->HID_AXIS_MIN, this->HID_AXIS_MAX);
  
   if (this->autoSend) this->update();
 }
-void USBJoystick::setRxAxis(int16_t value) {
+void USBJoystick::setRxAxis(float value) {
   value = constrain( value, this->axisMin.Rx, this->axisMax.Rx );
   this->axis.Rx = map(value, this->axisMin.Rx, this->axisMax.Rx, 
                       this->HID_AXIS_MIN, this->HID_AXIS_MAX);
   
   if (this->autoSend) this->update();
 }
-void USBJoystick::setRyAxis(int16_t value) {
+void USBJoystick::setRyAxis(float value) {
   value = constrain( value, this->axisMin.Ry, this->axisMax.Ry );
   this->axis.Ry = map(value, this->axisMin.Ry, this->axisMax.Ry, 
                       this->HID_AXIS_MIN, this->HID_AXIS_MAX);
   
   if (this->autoSend) this->update();
 }
-void USBJoystick::setRzAxis(int16_t value) {
+void USBJoystick::setRzAxis(float value) {
   value = constrain( value, this->axisMin.Rz, this->axisMax.Rz );
   this->axis.Rz = map(value, this->axisMin.Rz, this->axisMax.Rz, 
                       this->HID_AXIS_MIN, this->HID_AXIS_MAX);
@@ -317,7 +317,7 @@ void USBJoystick::setRzAxis(int16_t value) {
   if (this->autoSend) this->update();
 }
 
-void USBJoystick::setThrottleAxis(int16_t value) {
+void USBJoystick::setThrottleAxis(float value) {
   value = constrain( value, this->axisMin.throttle, this->axisMax.throttle );
   this->axis.throttle = map(value, this->axisMin.throttle, this->axisMax.throttle, 
                           this->HID_AXIS_MIN, this->HID_AXIS_MAX);
@@ -325,7 +325,7 @@ void USBJoystick::setThrottleAxis(int16_t value) {
   if (this->autoSend) this->update();
 }
 
-void USBJoystick::setRudderAxis(int16_t value) {
+void USBJoystick::setRudderAxis(float value) {
   value = constrain( value, this->axisMin.rudder, this->axisMax.rudder );
   this->axis.rudder = map(value, this->axisMin.rudder, this->axisMax.rudder,
                         this->HID_AXIS_MIN, this->HID_AXIS_MAX);
