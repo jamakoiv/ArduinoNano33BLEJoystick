@@ -73,8 +73,8 @@ const uint8_t* USBJoystick::report_desc(void)
             USAGE(1), 0x35,             // Rz
             //LOGICAL_MINIMUM(2), 0x01, 0xfe, // 0xfe01 = -511. 10-bit resolution. 
             //LOGICAL_MAXIMUM(2), 0xff, 0x01, // 0x01ff = 511
-            LOGICAL_MINIMUM(2), this->HID_AXIS_MIN, this->HID_AXIS_MIN >> this->BYTE_LENGTH,
-            LOGICAL_MAXIMUM(2), this->HID_AXIS_MAX, this->HID_AXIS_MAX >> this->BYTE_LENGTH,
+            0x16, 0x01, 0xF8,
+            0x26, 0xFF, 0x07,
             REPORT_COUNT(1), 0x06,      // 6 reports ...
             REPORT_SIZE(1), 0x10,       // ...of 16 bits of data.
             INPUT(1), 0x02,             // Data, variable, absolute.
